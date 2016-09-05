@@ -1,0 +1,35 @@
+{
+  "name": "loggerjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node ./examples/index.js",
+    "watch:test": "npm t -- -w",
+    "test": "mocha tests/source/**/*.test.js --compilers js:babel-register",
+    "cover": "nyc npm t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PolSendra/loggerjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PolSendra/loggerjs/issues"
+  },
+  "homepage": "https://github.com/PolSendra/loggerjs#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2015-node6": "^0.3.0",
+    "babel-register": "^6.14.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.4.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.10.2",
+    "sinon": "^1.17.5"
+  }
+}
