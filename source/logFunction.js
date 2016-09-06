@@ -1,4 +1,4 @@
-
+//  write the date in the console
 function logConsoleWithLog (logPath, logMessage) {
     //    console.log('logPath => ' + logPath);
     //    console.log('logMessage => ' + logMessage);
