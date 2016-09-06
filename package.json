@@ -25,10 +25,12 @@
     "babel-preset-es2015-node6": "^0.3.0",
     "babel-register": "^6.14.0",
     "chai": "^3.5.0",
+    "coveralls": "^2.11.12",
     "eslint": "^3.4.0",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.0",
     "mocha": "^3.0.2",
+    "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^1.10.2",
     "sinon": "^1.17.5"
   }
