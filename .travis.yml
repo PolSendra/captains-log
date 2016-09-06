@@ -1,6 +1,5 @@
 language: node_js
 node_js:
     - "6.1"
-script:
-  - npm --silent test
-  - cat ./coverage/lcov.info | coveralls
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
