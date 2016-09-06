@@ -40,6 +40,13 @@ describe('test suit for the log module', () => {
                 expect(stub.called).to.be.true;
                 expect(stub.calledOnce).to.be.true;
             });
+            it('with random params', () => {
+                // creating a stub
+                stub = sinon.stub(logFunction, 'logConsoleWithLog');
+                log('Test message for console.log', 'consola', 'logg', 'path');
+                expect(stub.called).to.be.true;
+                expect(stub.calledOnce).to.be.true;
+            });
         });
         describe('Call logConsoleWithError', () => {
             it('with logOutput = console and logType = log ', () => {

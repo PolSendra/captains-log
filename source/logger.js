@@ -15,10 +15,8 @@ export default (logMessage, logOutput, logType, logPath) => {
     if (logOutput === undefined) {
         if (env === 'production' || env === 'test') {
             logOutput = 'file';
-        } else if (env === 'development') {
+        } else /* (env === 'development') */ {
             logOutput = 'console';
-        } else {
-            logOutput = 'file';
         }
     } else if (logOutput === 'console' || logOutput === 'con' || logOutput === 'c') {
         //  writeLogToConsole(logType, logPath, logMessage);
