@@ -1,8 +1,8 @@
 {
   "name": "loggerjs",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "dev": "nodemon --exec babel-node ./examples/index.js",
     "watch:test": "npm t -- -w",
@@ -13,8 +13,8 @@
     "type": "git",
     "url": "git+https://github.com/PolSendra/loggerjs.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Pol Sendra",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/PolSendra/loggerjs/issues"
   },
