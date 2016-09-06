@@ -116,7 +116,7 @@ describe('test suit for the log module', () => {
             });
         });
         describe('It should never call logConsoleWithError', () => {
-            it('with logOutput = console and logType = log ', () => {
+            it('with logOutput = console and logType = log', () => {
                 // creating a stub
                 stub = sinon.stub(logFunction, 'logConsoleWithError');
                 let error = new Error('Testing a new error');
