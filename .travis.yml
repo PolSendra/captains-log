@@ -3,4 +3,4 @@ node_js:
     - "6.1"
 script: npm run cover
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - codecov
