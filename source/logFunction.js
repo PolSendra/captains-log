@@ -1,4 +1,5 @@
 //  write the date in the console
+
 function logConsoleWithLog (logPath, logMessage) {
     //    console.log('logPath => ' + logPath);
     //    console.log('logMessage => ' + logMessage);
@@ -32,11 +33,11 @@ function logConsoleWithError (logPath, logMessage) {
 
 function logFileWithLog (logType, logPath, logMessage) {
     //
-    /* if (logPath === 'undefined') {
-
+    if (logPath === 'undefined') {
+        
     } else {
 
-    }*/
+    }
 }
 
 function logFileWithError (logType, logPath, logMessage) {
