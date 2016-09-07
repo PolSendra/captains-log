@@ -10,6 +10,8 @@ describe('test suit for the log module', () => {
     //  variables
     //  let logOutput, logType, logPath, logMessage;
     let stub;
+    let stubFileLog;
+    let stubFileError;
 
     describe('Development environment', () => {
         beforeEach(() => {
@@ -88,126 +90,117 @@ describe('test suit for the log module', () => {
     describe('Production environment', () => {
         beforeEach(() => {
             process.env.NODE_ENV = 'production';
+            stub = sinon.stub(logFunction, 'logConsoleWithLog');
+            stubFileLog = sinon.stub(logFunction, 'logFileWithLog');
+            stubFileError = sinon.stub(logFunction, 'logFileWithError');
         });
         afterEach(() => {
             stub.restore();
+            stubFileLog.restore();
+            stubFileError.restore();
         });
         describe('It should never call logConsoleWithLog', () => {
             it('with logOutput = console and logType = log and some logPath', () => {
                 // creating a stub
-                stub = sinon.stub(logFunction, 'logConsoleWithLog');
                 log('Test message for console.log', 'console', 'log', 'somePath');
                 expect(stub.called).to.be.false;
-                expect(stub.calledOnce).to.be.false;
+                expect(stubFileLog.calledOnce).to.be.true;
             });
             it('with logOutput = console and logType = log and logPath = undefined', () => {
                 // creating a stub
-                stub = sinon.stub(logFunction, 'logConsoleWithLog');
                 log('Test message for console.log', 'console', 'log');
                 expect(stub.called).to.be.false;
-                expect(stub.calledOnce).to.be.false;
+                expect(stubFileLog.calledOnce).to.be.true;
             });
             it('with only message', () => {
                 // creating a stub
-                stub = sinon.stub(logFunction, 'logConsoleWithLog');
                 log('Test message for console.log');
                 expect(stub.called).to.be.false;
-                expect(stub.calledOnce).to.be.false;
+                expect(stubFileLog.calledOnce).to.be.true;
             });
         });
         describe('It should never call logConsoleWithError', () => {
             it('with logOutput = console and logType = log', () => {
                 // creating a stub
-                stub = sinon.stub(logFunction, 'logConsoleWithError');
                 let error = new Error('Testing a new error');
                 log(error, 'console', 'error', '');
                 expect(stub.called).to.be.false;
-                expect(stub.calledOnce).to.be.false;
+                expect(stubFileError.calledOnce).to.be.true;
             });
             it('with logOutput = console and logType = log and logPath = undefined', () => {
                 // creating a stub
-                stub = sinon.stub(logFunction, 'logConsoleWithError');
                 let error = new Error('Testing a new error');
                 log(error, 'console', 'error', undefined);
                 expect(stub.called).to.be.false;
-                expect(stub.calledOnce).to.be.false;
+                expect(stubFileError.calledOnce).to.be.true;
             });
             it('with logOutput = console and logType = log and message instanceof Error', () => {
                 // creating a stub
-                stub = sinon.stub(logFunction, 'logConsoleWithError');
                 let error = new Error('Testing a new error');
                 log(error, 'console', 'log', '');
                 expect(stub.called).to.be.false;
-                expect(stub.calledOnce).to.be.false;
+                expect(stubFileError.calledOnce).to.be.true;
             });
         });
         describe('Allways call logFile', () => {
             describe('When the message is an Error', () => {
                 it('with logOutput = file ', () => {
                     // creating a stub
-                    stub = sinon.stub(logFunction, 'logFileWithError');
                     let error = new Error('Testing a new error');
                     log(error, 'file', 'error', '');
-                    expect(stub.called).to.be.true;
-                    expect(stub.calledOnce).to.be.true;
+                    expect(stubFileError.called).to.be.true;
+                    expect(stubFileError.calledOnce).to.be.true;
                 });
                 it('with logOutput = console', () => {
                     // creating a stub
-                    stub = sinon.stub(logFunction, 'logFileWithError');
                     let error = new Error('Testing a new error');
                     log(error, 'console', undefined, undefined);
-                    expect(stub.called).to.be.true;
-                    expect(stub.calledOnce).to.be.true;
+                    expect(stubFileError.called).to.be.true;
+                    expect(stubFileError.calledOnce).to.be.true;
                 });
                 it('with logOutput = console and logType = log', () => {
                     // creating a stub
-                    stub = sinon.stub(logFunction, 'logFileWithError');
                     let error = new Error('Testing a new error');
                     log(error, 'console', 'log', undefined);
-                    expect(stub.called).to.be.true;
-                    expect(stub.calledOnce).to.be.true;
+                    expect(stubFileError.called).to.be.true;
+                    expect(stubFileError.calledOnce).to.be.true;
                 });
                 it('with only a message', () => {
                     // creating a stub
-                    stub = sinon.stub(logFunction, 'logFileWithError');
                     let error = new Error('Testing a new error');
                     log(error, 'file', 'error', '');
-                    expect(stub.called).to.be.true;
-                    expect(stub.calledOnce).to.be.true;
+                    expect(stubFileError.called).to.be.true;
+                    expect(stubFileError.calledOnce).to.be.true;
                 });
             });
             describe('When the message is a Log', () => {
                 it('with logOutput = file ', () => {
                     // creating a stub
-                    stub = sinon.stub(logFunction, 'logFileWithLog');
                     let error = 'Testing a new error';
                     log(error, 'file', 'log', '');
-                    expect(stub.called).to.be.true;
-                    expect(stub.calledOnce).to.be.true;
+                    expect(stubFileLog.called).to.be.true;
+                    expect(stubFileLog.calledOnce).to.be.true;
                 });
                 it('with logOutput = console', () => {
                     // creating a stub
-                    stub = sinon.stub(logFunction, 'logFileWithLog');
                     let error = 'Testing a new error';
                     log(error, 'console', undefined, undefined);
-                    expect(stub.called).to.be.true;
-                    expect(stub.calledOnce).to.be.true;
+                    expect(stubFileLog.called).to.be.true;
+                    expect(stubFileLog.calledOnce).to.be.true;
                 });
                 it('with logOutput = console and logType = log', () => {
                     // creating a stub
-                    stub = sinon.stub(logFunction, 'logFileWithLog');
                     let error = 'Testing a new error';
                     log(error, 'console', 'log', undefined);
-                    expect(stub.called).to.be.true;
-                    expect(stub.calledOnce).to.be.true;
+                    expect(stubFileLog.called).to.be.true;
+                    expect(stubFileLog.calledOnce).to.be.true;
                 });
                 it('with only a message', () => {
                     // creating a stub
-                    stub = sinon.stub(logFunction, 'logFileWithLog');
                     let error = 'Testing a new error';
                     log(error, 'file', 'error', '');
-                    expect(stub.called).to.be.true;
-                    expect(stub.calledOnce).to.be.true;
+                    expect(stubFileLog.called).to.be.true;
+                    expect(stubFileLog.calledOnce).to.be.true;
                 });
             });
         });
