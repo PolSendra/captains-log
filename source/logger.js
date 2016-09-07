@@ -19,16 +19,13 @@ export default (logMessage, logOutput, logType, logPath) => {
             logOutput = 'console';
         }
     } else if (logOutput === 'console' || logOutput === 'con' || logOutput === 'c') {
-        //  writeLogToConsole(logType, logPath, logMessage);
         logOutput = 'console';
     } else if (logOutput === 'file' || logOutput === 'f') {
-        //  writeLogToLogFile(logType, logPath, logMessage);
         logOutput = 'file';
     } else logOutput = 'console'; //    maybe put error here
 
     //  we force logOutput to file in environment eql to Production
     if (env === 'production' || env === 'test') logOutput = 'file';
-
     //  logType
     if (logType === undefined) {
         if (logMessage instanceof Error) {
@@ -39,24 +36,31 @@ export default (logMessage, logOutput, logType, logPath) => {
     } else if (logType === 'log' || logType === 'l') {
         logType = 'log';
     } else logType = 'log'; //    maybe put error here
-
-    // logPath => the path dont mater if its undefined or not;
     //  message
     if (logMessage instanceof Error) {
         logType = 'error';
     } else logType = 'log';
-
     if (logMessage === undefined) {
         // let error = new Error('error passing the message to de log');
         // log(error);
     }
 
-    //    console.log('logtype => ' + logType);
-    //    console.log('logOutput => ' + logOutput);
+    //  console.log('logtype => ' + logType);
+    //  console.log('logOutput => ' + logPath);
 
     // different options to log
-    if (logOutput === 'console' && logType === 'log') logConsoleWithLog(logPath, logMessage);
-    if (logOutput === 'console' && logType === 'error') logConsoleWithError(logPath, logMessage);
-    if (logOutput === 'file' && logType === 'log') logFileWithLog(logPath, logMessage);
-    if (logOutput === 'file' && logType === 'error') logFileWithError(logPath, logMessage);
+    let result;
+    if (logOutput === 'console' && logType === 'log') {
+        result = logConsoleWithLog(logPath, logMessage);
+    }
+    if (logOutput === 'console' && logType === 'error') {
+        result = logConsoleWithError(logPath, logMessage);
+    }
+    if (logOutput === 'file' && logType === 'log') {
+        result = logFileWithLog(logPath, logMessage);
+    }
+    if (logOutput === 'file' && logType === 'error') {
+        result = logFileWithError(logPath, logMessage);
+    }
+    return result;
 };
