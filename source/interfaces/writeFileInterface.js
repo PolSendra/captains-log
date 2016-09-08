@@ -1,11 +1,14 @@
 import fs from 'fs';
 
-export function writeLog (logMessage) {
+function writeLog (logMessage) {
     //  put the date on the message log
-    fs.appendFile('logsFile.log', logMessage + '\r\n', function (err) {
+    console.log('entro writelog');
+    fs.appendFile('logsFile.log', logMessage + '\r\n', (err) => {
         if (err) {
-            return err;
+            console.log('retorno error');
+            throw err;
         }
-        return true;
     });
 }
+
+export {writeLog};
