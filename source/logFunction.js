@@ -34,9 +34,9 @@ function logFileWithLog (logPath, logMessage) {
     let result;
     const date = new Date().toLocaleString();
     if (logPath === undefined) {
-        result = writeLog(`[LOG][${date}] : (${logMessage})`);
+        writeLog(`[LOG][${date}] : (${logMessage})`);
     } else {
-        result = writeLog(`[LOG][${date}][${logPath}] : (${logMessage})`);
+        writeLog(`[LOG][${date}][${logPath}] : (${logMessage})`);
     }
     return result;
 }
@@ -46,9 +46,9 @@ function logFileWithError (logPath, logMessage) {
     let result;
     const date = new Date().toLocaleString();
     if (logPath === undefined) {
-        result = writeLog(`[ERROR][${date}] : (${logMessage.message}) | [Trace] : (${logMessage.stack})`);
+        writeLog(`[ERROR][${date}] : (${logMessage.message}) | [Trace] : (${logMessage.stack})`);
     } else {
-        result = writeLog(`[ERROR][${date}][${logPath}] : (${logMessage.message}) | [Trace] : (${logMessage.stack})`);
+        writeLog(`[ERROR][${date}][${logPath}] : (${logMessage.message}) | [Trace] : (${logMessage.stack})`);
     }
     return result;
 }
