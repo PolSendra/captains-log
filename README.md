@@ -6,6 +6,6 @@
 [![devDependencies Status](https://david-dm.org/PolSendra/loggerjs/dev-status.png)](https://david-dm.org/PolSendra/light-log?type=dev)
 
 # Install
-'''
-npm install light-log
-'''
+```
+npm install --save light-log
+```
