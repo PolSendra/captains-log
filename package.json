@@ -2,12 +2,15 @@
   "name": "light-log",
   "version": "0.0.4",
   "description": "",
-  "main": "",
+  "main": "lib/logger.js",
   "scripts": {
     "dev": "nodemon --exec babel-node ./examples/index.js",
     "watch:test": "npm t -- -w",
     "test": "mocha tests/source/**/*.test.js --compilers js:babel-register",
-    "cover": "nyc npm t"
+    "cover": "nyc npm t",
+    "compile": "rimraf lib/* && babel source -d lib",
+    "prepublish": "npm run compile",
+    "pish": "babel source --out-dir lib"
   },
   "repository": {
     "type": "git",
@@ -34,6 +37,7 @@
     "mocha-lcov-reporter": "^1.2.0",
     "nodemon": "^1.10.2",
     "nyc": "^8.1.0",
+    "rifraf": "^2.0.2",
     "sinon": "^1.17.5"
   }
 }
