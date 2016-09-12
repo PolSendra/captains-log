@@ -1,6 +1,6 @@
 {
   "name": "light-log",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "watch:test": "npm t -- -w",
     "test": "mocha tests/source/**/*.test.js --compilers js:babel-register",
     "cover": "nyc npm t",
-    "pish": "babel source --out-dir lib"
+    "prepublish": "babel source --out-dir lib"
   },
   "repository": {
     "type": "git",
