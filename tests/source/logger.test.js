@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 import { expect } from 'chai';
 import sinon from 'sinon';
-import log from '../../source/logger.js';
+import log from '../../source/light-log.js';
 import * as logFunction from '../../source/logFunction.js';
 
 //  { logConsoleWithLog, logConsoleWithError, logFile }

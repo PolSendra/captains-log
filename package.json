@@ -1,15 +1,14 @@
 {
   "name": "light-log",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
-  "main": "./lib/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node ./examples/index.js",
     "watch:test": "npm t -- -w",
     "test": "mocha tests/source/**/*.test.js --compilers js:babel-register",
     "cover": "nyc npm t",
-    "compile": "rimraf lib/* && babel source -d lib",
-    "prepublish": "npm run compile"
+    "prepublish": "rimraf lib/* && babel source --out-dir lib"
   },
   "repository": {
     "type": "git",

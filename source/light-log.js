@@ -1,6 +1,6 @@
 import { logConsoleWithLog, logConsoleWithError, logFileWithLog, logFileWithError } from './logFunction';
 
-module.exports = function log (logMessage, logOutput, logType, logPath) {
+module.exports = (logMessage, logOutput, logType, logPath) => {
     //  see what env we are on
     const env = process.env.NODE_ENV;
     //    console.log('environment => ' + env);
